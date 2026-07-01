@@ -14,16 +14,25 @@ export default function FAQSection() {
     <div className="border-t border-border">
       <Section>
         <Container>
-          <SectionHeading eyebrow="FAQ" title="Questions, answered" />
-          <div className="mt-10 max-w-3xl">
-            <Accordion type="single" collapsible>
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={String(i)}>
-                  <AccordionTrigger>{faq.q}</AccordionTrigger>
-                  <AccordionContent>{faq.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <SectionHeading
+                eyebrow="FAQ"
+                title="Questions, answered"
+                intro="A few of the things people ask before we start."
+              />
+            </div>
+
+            <div>
+              <Accordion type="single" collapsible>
+                {faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={String(i)}>
+                    <AccordionTrigger>{faq.q}</AccordionTrigger>
+                    <AccordionContent>{faq.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </Container>
       </Section>

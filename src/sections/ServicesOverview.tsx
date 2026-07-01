@@ -1,17 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
-import type { CSSProperties } from 'react'
 import { Button, Container, Section } from '../ui'
 import SectionHeading from '../components/SectionHeading'
 import ScrollReveal from '../components/ScrollReveal'
 import { cn } from '../lib/cn'
 import { services } from '../data/content'
-
-const wash: CSSProperties = {
-  backgroundImage:
-    'radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--accent-500) 12%, transparent) 0%, transparent 55%)',
-}
 
 /**
  * Interactive services selector: pick a service on the left, its detail panel
@@ -83,10 +77,9 @@ export default function ServicesOverview() {
           {/* Detail panel */}
           <ScrollReveal
             delay={80}
-            className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm sm:p-10"
+            className="overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm sm:p-10"
           >
-            <div className="absolute inset-0" style={wash} aria-hidden />
-            <div key={active} className="relative motion-safe:animate-in">
+            <div key={active} className="motion-safe:animate-in">
               <h3 className="font-display text-2xl font-semibold">
                 {service.title}
               </h3>

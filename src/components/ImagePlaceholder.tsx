@@ -8,8 +8,8 @@ interface ImagePlaceholderProps {
 }
 
 /**
- * Clearly-marked placeholder for a not-yet-provided image (screenshot, gallery,
- * etc.). Keeps layout production-shaped while making the gap obvious to replace.
+ * Clearly-marked placeholder for a not-yet-provided image. Clean, texture-only
+ * (no colour wash) — keeps layout production-shaped and easy to replace.
  */
 export default function ImagePlaceholder({
   label,
@@ -20,11 +20,13 @@ export default function ImagePlaceholder({
       role="img"
       aria-label={label}
       className={cn(
-        'flex flex-col items-center justify-center gap-2 rounded-md border border-dashed border-border-strong bg-bg-subtle p-4 text-center',
+        'flex flex-col items-center justify-center gap-3 rounded-md border border-border bg-bg-subtle p-4 text-center',
         className,
       )}
     >
-      <ImageIcon className="size-5 text-fg-subtle" aria-hidden />
+      <span className="grid size-9 place-items-center rounded-lg border border-border bg-surface text-fg-subtle shadow-sm">
+        <ImageIcon className="size-4" aria-hidden />
+      </span>
       <span className="text-xs font-medium text-fg-subtle">{label}</span>
     </div>
   )

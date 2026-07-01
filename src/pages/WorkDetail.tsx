@@ -88,6 +88,27 @@ export default function WorkDetail() {
             <Component />
           </Prose>
 
+          {/* Gallery — multiple project images (placeholders for now). */}
+          <div className="mt-16">
+            <h2 className="font-display text-xl font-semibold">Gallery</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <BrowserFrame className="sm:col-span-2">
+                <ImagePlaceholder
+                  label={`[${fm.title} — Screen 1]`}
+                  className="aspect-[16/9] rounded-none border-0"
+                />
+              </BrowserFrame>
+              <ImagePlaceholder
+                label={`[${fm.title} — Screen 2]`}
+                className="aspect-[4/3]"
+              />
+              <ImagePlaceholder
+                label={`[${fm.title} — Screen 3]`}
+                className="aspect-[4/3]"
+              />
+            </div>
+          </div>
+
           {testimonial && (
             <figure className="mt-14 rounded-lg border border-border bg-bg-subtle p-8">
               <blockquote className="text-lg leading-relaxed text-fg">

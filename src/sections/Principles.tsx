@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import {
   Gauge,
   MessageSquare,
@@ -55,11 +54,6 @@ const cells: Cell[] = [
   },
 ]
 
-const wash: CSSProperties = {
-  backgroundImage:
-    'radial-gradient(130% 110% at 100% 0%, color-mix(in srgb, var(--accent-500) 16%, transparent) 0%, transparent 55%)',
-}
-
 export default function Principles() {
   return (
     <div className="border-t border-border bg-bg-subtle">
@@ -78,15 +72,13 @@ export default function Principles() {
                 delay={i * 60}
                 className={cell.span}
               >
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface p-7 shadow-sm transition-[transform,border-color,box-shadow] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_18px_44px_-18px_rgba(99,102,241,0.28)]">
-                  {cell.feature && (
-                    <div
-                      className="absolute inset-0"
-                      style={wash}
-                      aria-hidden
-                    />
+                <div
+                  className={cn(
+                    'group relative flex h-full flex-col overflow-hidden rounded-xl border border-border p-7 shadow-sm transition-[transform,border-color,box-shadow] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-border-strong hover:shadow-md',
+                    cell.feature ? 'bg-bg-subtle' : 'bg-surface',
                   )}
-                  <span className="relative grid size-11 place-items-center rounded-lg border border-border bg-bg-subtle text-fg">
+                >
+                  <span className="relative grid size-11 place-items-center rounded-lg border border-border bg-surface text-fg">
                     <cell.icon className="size-5" aria-hidden />
                   </span>
 
