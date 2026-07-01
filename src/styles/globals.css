@@ -111,6 +111,11 @@
 
   --ease-out-expo: var(--ease-out-expo);
 
+  /* Named animations (Radix-driven collapsibles, etc.). */
+  --animate-accordion-down: accordion-down var(--duration-base)
+    var(--ease-out-expo);
+  --animate-accordion-up: accordion-up var(--duration-base) var(--ease-out-expo);
+
   /* Fluid display scale (headings). Line-height + tracking tuned per size. */
   --text-4xl: clamp(1.85rem, 1.3rem + 2.2vw, 2.5rem);
   --text-4xl--line-height: 1.1;
@@ -194,4 +199,24 @@
 /* Utility: constrain body copy to a comfortable reading measure. */
 @utility measure {
   max-width: 68ch;
+}
+
+/* Collapsible (Radix Accordion) height transitions. Disabled automatically by
+   the prefers-reduced-motion rule in @layer base. */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }

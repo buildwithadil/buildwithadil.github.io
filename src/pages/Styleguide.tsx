@@ -1,5 +1,17 @@
 import type { ReactNode } from 'react'
 import { Head } from 'vite-react-ssg'
+import { ArrowRight } from 'lucide-react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Badge,
+  Button,
+  Card,
+  TextLink,
+} from '../ui'
+import { site } from '../config/site'
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -9,6 +21,15 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
       </h2>
       {children}
     </section>
+  )
+}
+
+function Row({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <span className="w-28 shrink-0 text-sm text-fg-subtle">{label}</span>
+      <div className="flex flex-wrap items-center gap-4">{children}</div>
+    </div>
   )
 }
 
@@ -42,10 +63,11 @@ export default function Styleguide() {
         </p>
         <h1 className="mt-3 text-6xl font-semibold">Styleguide</h1>
         <p className="measure mt-4 text-fg-muted">
-          Design foundation (M1): tokens, type scale, shape, elevation. Toggle
-          the theme in the header to verify every token in light and dark.
+          The design system, single-sourced. Toggle the theme in the header to
+          verify every token and component in light and dark.
         </p>
 
+        {/* ── Foundations ─────────────────────────────────────────────── */}
         <Section title="Color — semantic tokens">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {SEMANTIC_TOKENS.map((token) => (
@@ -114,23 +136,101 @@ export default function Styleguide() {
           </div>
         </Section>
 
-        <Section title="Actions — button styles (previews; primitives land in M2)">
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="rounded-md bg-fg px-5 py-2.5 text-sm font-medium text-bg">
-              Primary (ink)
-            </button>
-            <button className="rounded-md border border-border-strong px-5 py-2.5 text-sm font-medium hover:border-fg">
-              Secondary
-            </button>
-            <button className="rounded-md px-5 py-2.5 text-sm font-medium text-fg-muted hover:bg-bg-subtle hover:text-fg">
-              Ghost
-            </button>
-            <a
-              href="#"
-              className="text-sm font-medium text-accent underline underline-offset-4"
-            >
-              Link
-            </a>
+        {/* ── Components ──────────────────────────────────────────────── */}
+        <Section title="Button — variants">
+          <div className="space-y-5">
+            <Row label="Variant">
+              <Button>Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="link">Link</Button>
+            </Row>
+            <Row label="Size">
+              <Button size="sm">Small</Button>
+              <Button size="md">Medium</Button>
+              <Button size="lg">Large</Button>
+            </Row>
+            <Row label="With icon">
+              <Button iconRight={<ArrowRight className="size-4" />}>
+                Start a project
+              </Button>
+              <Button
+                variant="secondary"
+                iconLeft={<ArrowRight className="size-4" />}
+              >
+                Continue
+              </Button>
+            </Row>
+            <Row label="State">
+              <Button loading>Sending</Button>
+              <Button disabled>Disabled</Button>
+            </Row>
+          </div>
+        </Section>
+
+        <Section title="Links">
+          <div className="space-y-3">
+            <p className="text-fg-muted">
+              An <TextLink to="/work">internal route link</TextLink> uses SPA
+              navigation, while an{' '}
+              <TextLink href={site.social.github}>external link</TextLink> opens
+              safely in a new tab.
+            </p>
+          </div>
+        </Section>
+
+        <Section title="Card">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <Card className="p-6">
+              <h3 className="font-display text-lg font-medium">Static card</h3>
+              <p className="mt-2 text-sm text-fg-muted">
+                Surface, hairline border, medium-soft radius. Padding is
+                composed via className.
+              </p>
+            </Card>
+            <Card interactive className="p-6">
+              <h3 className="font-display text-lg font-medium">Interactive</h3>
+              <p className="mt-2 text-sm text-fg-muted">
+                Hover me — subtle lift + border emphasis for clickable cards.
+              </p>
+            </Card>
+          </div>
+        </Section>
+
+        <Section title="Badge">
+          <div className="flex flex-wrap gap-3">
+            <Badge>React</Badge>
+            <Badge>TypeScript</Badge>
+            <Badge>Available for work</Badge>
+          </div>
+        </Section>
+
+        <Section title="Accordion (Radix) — used for FAQ">
+          <div className="max-w-2xl">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="a">
+                <AccordionTrigger>
+                  What is your typical project timeline?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Most marketing sites ship in 2–4 weeks; larger web apps run
+                  longer. We agree a clear timeline before starting.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="b">
+                <AccordionTrigger>How does pricing work?</AccordionTrigger>
+                <AccordionContent>
+                  Projects are quoted up front based on scope, so there are no
+                  surprises.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="c">
+                <AccordionTrigger>Who owns the code?</AccordionTrigger>
+                <AccordionContent>
+                  You do — full ownership of the code and content on delivery.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </Section>
       </div>

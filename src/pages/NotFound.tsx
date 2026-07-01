@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Button } from '../ui'
 
 // Rendered for the catch-all route; vite-react-ssg emits this to 404.html,
 // which GitHub Pages serves for any unknown path.
@@ -14,12 +15,9 @@ export default function NotFound() {
       <p className="mt-4 text-fg-muted">
         The page you were looking for doesn’t exist or has moved.
       </p>
-      <Link
-        to="/"
-        className="mt-8 inline-block rounded-md bg-fg px-5 py-2.5 text-sm font-medium text-bg"
-      >
-        Back home
-      </Link>
+      <Button asChild className="mt-8">
+        <Link to="/">Back home</Link>
+      </Button>
     </section>
   )
 }
