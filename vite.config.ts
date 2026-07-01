@@ -7,9 +7,25 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import remarkGfm from 'remark-gfm'
 import { imagetools } from 'vite-imagetools'
 import { fileURLToPath, URL } from 'node:url'
-import { copyFile, readdir, writeFile } from 'node:fs/promises'
+import { copyFile, readFile, readdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { site } from './src/config/site'
+
+// react-helmet injects <title>/<meta> at the very start of <head>, pushing the
+// static charset past the first 1KB (a Lighthouse best-practice failure). Move
+// charset to be the first head element in every prerendered HTML file.
+async function fixCharset(dir: string) {
+  const files = ((await readdir(dir, { recursive: true })) as string[]).filter(
+    (f) => f.endsWith('.html'),
+  )
+  for (const f of files) {
+    const p = join(dir, f)
+    let html = await readFile(p, 'utf8')
+    html = html.replace(/\s*<meta charset="[^"]*"\s*\/?>/i, '')
+    html = html.replace('<head>', '<head><meta charset="utf-8" />')
+    await writeFile(p, html)
+  }
+}
 // Loads vite-react-ssg's `ssgOptions` augmentation onto Vite's config type.
 import type {} from 'vite-react-ssg'
 
@@ -70,6 +86,7 @@ export default defineConfig({
     onFinished: async (dir) => {
       await copyFile(join(dir, '404', 'index.html'), join(dir, '404.html'))
       await writeSitemap(dir)
+      await fixCharset(dir)
     },
   },
 })

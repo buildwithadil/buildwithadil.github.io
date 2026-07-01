@@ -40,9 +40,9 @@ export default function ServicesOverview() {
                   <Link
                     to="/services"
                     className="inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:gap-2 hover:text-fg-muted"
-                    aria-label={`Learn more about ${service.title}`}
                   >
                     Learn more
+                    <span className="sr-only"> about {service.title}</span>
                     <ArrowRight className="size-4" aria-hidden />
                   </Link>
                 </div>
