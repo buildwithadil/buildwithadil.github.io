@@ -1,11 +1,26 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
-import { Card, Container, Section } from '../ui'
+import { ArrowRight, Check } from 'lucide-react'
+import type { CSSProperties } from 'react'
+import { Button, Container, Section } from '../ui'
 import SectionHeading from '../components/SectionHeading'
 import ScrollReveal from '../components/ScrollReveal'
+import { cn } from '../lib/cn'
 import { services } from '../data/content'
 
+const wash: CSSProperties = {
+  backgroundImage:
+    'radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--accent-500) 12%, transparent) 0%, transparent 55%)',
+}
+
+/**
+ * Interactive services selector: pick a service on the left, its detail panel
+ * updates on the right. Hover-driven on desktop, focus/click accessible.
+ */
 export default function ServicesOverview() {
+  const [active, setActive] = useState(0)
+  const service = services[active]
+
   return (
     <Section>
       <Container>
@@ -15,40 +30,86 @@ export default function ServicesOverview() {
           intro="Three ways I help teams grow online — each engineered for performance, SEO, and long-term maintainability."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <ScrollReveal key={service.slug} delay={i * 60}>
-              <Card className="flex h-full flex-col p-7">
-                <h3 className="font-display text-xl font-semibold">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm text-fg-subtle">{service.forWho}</p>
-                <p className="mt-4 text-fg-muted">{service.outcome}</p>
-
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {service.includes.slice(0, 4).map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-full border border-border bg-bg-subtle px-2.5 py-0.5 text-xs text-fg-muted"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6 border-t border-border pt-5">
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:gap-2 hover:text-fg-muted"
+        <div className="mt-12 grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
+          {/* Selector */}
+          <ScrollReveal className="flex flex-col gap-2">
+            {services.map((s, i) => {
+              const on = i === active
+              return (
+                <button
+                  key={s.slug}
+                  type="button"
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  onClick={() => setActive(i)}
+                  aria-pressed={on}
+                  className={cn(
+                    'group flex items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all duration-[var(--duration-base)] ease-[var(--ease-out-expo)]',
+                    on
+                      ? 'border-border-strong bg-surface shadow-sm'
+                      : 'border-transparent hover:bg-bg-subtle',
+                  )}
+                >
+                  <span
+                    className={cn(
+                      'font-display text-lg font-bold tabular-nums transition-colors',
+                      on ? 'text-gradient' : 'text-fg-subtle',
+                    )}
                   >
-                    Learn more
-                    <span className="sr-only"> about {service.title}</span>
-                    <ArrowRight className="size-4" aria-hidden />
-                  </Link>
-                </div>
-              </Card>
-            </ScrollReveal>
-          ))}
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="flex-1">
+                    <span className="block font-display text-lg font-semibold">
+                      {s.title}
+                    </span>
+                    <span className="mt-0.5 block text-sm text-fg-muted">
+                      {s.forWho}
+                    </span>
+                  </span>
+                  <ArrowRight
+                    className={cn(
+                      'size-4 shrink-0 transition-all',
+                      on
+                        ? 'translate-x-0 text-accent opacity-100'
+                        : '-translate-x-1 opacity-0',
+                    )}
+                    aria-hidden
+                  />
+                </button>
+              )
+            })}
+          </ScrollReveal>
+
+          {/* Detail panel */}
+          <ScrollReveal
+            delay={80}
+            className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm sm:p-10"
+          >
+            <div className="absolute inset-0" style={wash} aria-hidden />
+            <div key={active} className="relative motion-safe:animate-in">
+              <h3 className="font-display text-2xl font-semibold">
+                {service.title}
+              </h3>
+              <p className="mt-3 max-w-md text-fg-muted">{service.outcome}</p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {service.includes.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 text-sm text-fg-muted"
+                  >
+                    <Check
+                      className="size-4 shrink-0 text-accent"
+                      aria-hidden
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button asChild variant="secondary" className="mt-8">
+                <Link to="/services">Explore services</Link>
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
       </Container>
     </Section>
