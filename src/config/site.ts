@@ -1,11 +1,12 @@
 // ─────────────────────────────────────────────────────────────────────────
-// SINGLE SOURCE OF TRUTH for site-wide config.
-// TODO(adil): fill in the placeholders marked `REPLACE` before deploy.
+// SINGLE SOURCE OF TRUTH for site-wide config: identity, contact, nav, CTAs.
+// Change a value here and it updates everywhere.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const site = {
   name: 'Build with Adil',
   author: 'Adil Shaikh',
+  title: 'Freelance Full-Stack Web Developer',
 
   // GitHub user-page URL (served lowercase). Swap to a custom domain later.
   url: 'https://thisisadil.github.io',
@@ -13,24 +14,31 @@ export const site = {
   description:
     'Adil Shaikh — freelance full-stack developer. Fast, SEO-strong websites and web apps, engineered with care.',
 
-  // REPLACE with your city (global-first + subtle location, per SEO plan).
-  location: 'REPLACE-City, Country',
+  // Global-first positioning + a subtle base location (per SEO strategy).
+  location: 'Aurangabad, India',
 
   // Contact channels (per Content Strategy: WhatsApp + Cal.com + passive email).
   contact: {
-    // REPLACE with your number in international format, no `+` or spaces.
-    whatsapp: 'https://wa.me/REPLACE-15551234567',
-    // REPLACE with your Cal.com link.
-    calcom: 'https://cal.com/REPLACE-adil',
-    // REPLACE with your email.
-    email: 'REPLACE-hello@example.com',
+    whatsapp: 'https://wa.me/918625833128',
+    calcom: 'https://cal.com/adil-shaikh/discovery-call',
+    email: 'reachme.adilshaikh@gmail.com',
   },
 
   social: {
     github: 'https://github.com/ThisIsAdil',
-    // REPLACE with your LinkedIn profile.
-    linkedin: 'https://www.linkedin.com/in/REPLACE-username',
+    linkedin: 'https://www.linkedin.com/in/hey-adilshaikh',
   },
+
+  // Primary navigation (final IA). Order = the funnel's supporting pages.
+  nav: [
+    { label: 'Work', href: '/work' },
+    { label: 'Services', href: '/services' },
+    { label: 'About', href: '/about' },
+    { label: 'Blog', href: '/blog' },
+  ],
+
+  // The one action everything points to.
+  primaryCta: { label: 'Start a project', href: '/contact' },
 } as const
 
 export type Site = typeof site

@@ -1,45 +1,55 @@
-import { Link, Outlet } from 'react-router-dom'
-import ThemeToggle from '../components/ThemeToggle'
-import { site } from '../config/site'
+import { useEffect, useRef } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import MobileCTABar from '../components/MobileCTABar'
 
-// The frame every page hangs in. Fuller header/footer/skip-link arrive in M3;
-// this M0 version proves the layout + routing + theming shell works end to end.
+/**
+ * App shell. Composes the chrome and owns cross-route behaviour:
+ *  - scroll reset on navigation (SPAs don't do this for you),
+ *  - focus moved to <main> so keyboard/screen-reader users land on new content,
+ *  - a subtle per-route fade (reduced-motion safe),
+ *  - bottom padding on mobile so the fixed CTA bar never covers content.
+ */
 export default function RootLayout() {
+  const { pathname } = useLocation()
+  const mainRef = useRef<HTMLElement>(null)
+  const firstRender = useRef(true)
+
+  useEffect(() => {
+    // Don't steal focus / scroll on the initial (hydrated) render.
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    window.scrollTo(0, 0)
+    mainRef.current?.focus()
+  }, [pathname])
+
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div className="flex min-h-dvh flex-col pb-[76px] md:pb-0">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-fg focus:px-4 focus:py-2 focus:text-bg"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-bg"
       >
         Skip to content
       </a>
 
-      <header className="border-b border-border">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link
-            to="/"
-            className="font-display text-lg font-semibold tracking-tight"
-          >
-            {site.name}
-          </Link>
-          <div className="flex items-center gap-6 text-sm text-fg-muted">
-            <Link to="/work" className="hover:text-fg">
-              Work
-            </Link>
-            <ThemeToggle />
-          </div>
-        </nav>
-      </header>
+      <Header />
 
-      <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-6 py-16">
-        <Outlet />
+      <main
+        id="main"
+        ref={mainRef}
+        tabIndex={-1}
+        className="flex-1 outline-none"
+      >
+        <div key={pathname} className="motion-safe:animate-fade-in">
+          <Outlet />
+        </div>
       </main>
 
-      <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-fg-muted">
-          © {site.name} · Fast, findable, built to convert.
-        </div>
-      </footer>
+      <Footer />
+      <MobileCTABar />
     </div>
   )
 }

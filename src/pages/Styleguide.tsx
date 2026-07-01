@@ -9,6 +9,7 @@ import {
   Badge,
   Button,
   Card,
+  Container,
   TextLink,
 } from '../ui'
 import { site } from '../config/site'
@@ -57,7 +58,7 @@ export default function Styleguide() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      <div>
+      <Container className="py-16">
         <p className="text-sm font-medium uppercase tracking-widest text-fg-subtle">
           Internal · not indexed
         </p>
@@ -233,7 +234,7 @@ export default function Styleguide() {
             </Accordion>
           </div>
         </Section>
-      </div>
+      </Container>
     </>
   )
 }
