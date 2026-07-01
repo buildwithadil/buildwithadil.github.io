@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 import { CalendarClock } from 'lucide-react'
 import { Button, Container, Section } from '../ui'
 import ScrollReveal from '../components/ScrollReveal'
+import Backdrop from '../components/Backdrop'
 import { site } from '../config/site'
 
 export default function FinalCTA() {
   return (
-    <div className="border-t border-border bg-bg-subtle">
+    <div className="relative overflow-hidden border-t border-border bg-bg-subtle">
+      <Backdrop />
       <Section>
         <Container>
           <ScrollReveal>

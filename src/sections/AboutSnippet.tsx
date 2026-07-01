@@ -7,20 +7,37 @@ export default function AboutSnippet() {
     <div className="border-t border-border">
       <Section>
         <Container>
-          <ScrollReveal>
-            <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-              {/* Monogram placeholder until a real photo is provided. */}
-              <div
-                className="grid size-24 shrink-0 place-items-center rounded-xl border border-border bg-bg-subtle font-display text-2xl font-semibold text-fg-muted"
-                aria-hidden
-              >
-                AS
+          <div className="grid gap-12 md:grid-cols-[minmax(0,300px)_1fr] md:items-center md:gap-16">
+            <ScrollReveal>
+              <div className="relative mx-auto w-full max-w-[280px]">
+                {/* layered offset frame — a small crafted detail */}
+                <div
+                  aria-hidden
+                  className="absolute -inset-3 -z-10 rounded-2xl border border-border"
+                />
+                <div className="overflow-hidden rounded-xl border border-border shadow-md">
+                  <img
+                    src="/images/professional-headshot.png"
+                    alt="Adil Shaikh"
+                    width={600}
+                    height={750}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-cover object-top"
+                  />
+                </div>
               </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={80}>
               <div className="max-w-2xl">
-                <h2 className="text-3xl font-semibold tracking-tight">
+                <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
+                  <span className="h-px w-6 bg-border-strong" aria-hidden />
+                  About
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
                   Senior engineering, direct from the developer.
                 </h2>
-                <p className="mt-4 text-fg-muted">
+                <p className="mt-5 text-lg leading-relaxed text-fg-muted">
                   I’m Adil Shaikh, a full-stack developer focused on fast,
                   SEO-strong websites and platforms. I’ve built full-stack
                   EdTech systems — student portals, admin tools, AI-assisted
@@ -28,12 +45,12 @@ export default function AboutSnippet() {
                   services. I care about performance, clarity, and work that
                   holds up over time.
                 </p>
-                <Button asChild variant="secondary" className="mt-6">
+                <Button asChild variant="secondary" className="mt-7">
                   <Link to="/about">More about me</Link>
                 </Button>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </Container>
       </Section>
     </div>

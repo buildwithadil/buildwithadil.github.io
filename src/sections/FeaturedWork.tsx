@@ -19,10 +19,13 @@ export default function FeaturedWork() {
           />
           <Link
             to="/work"
-            className="inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:text-fg-muted"
+            className="group inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:text-fg-muted"
           >
             All work
-            <ArrowUpRight className="size-4" aria-hidden />
+            <ArrowUpRight
+              className="size-4 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
           </Link>
         </div>
 

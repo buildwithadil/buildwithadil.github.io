@@ -18,7 +18,8 @@ export default function SectionHeading({
   return (
     <div className={cn('max-w-2xl', className)}>
       {eyebrow && (
-        <p className="text-sm font-medium uppercase tracking-widest text-fg-subtle">
+        <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
+          <span className="h-px w-6 bg-border-strong" aria-hidden />
           {eyebrow}
         </p>
       )}

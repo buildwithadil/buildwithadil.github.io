@@ -36,15 +36,10 @@ export default function ServicesOverview() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
-                  <span className="text-sm text-fg-muted">
-                    {service.priceFrom
-                      ? `From ${service.priceFrom}`
-                      : 'Custom quote'}
-                  </span>
+                <div className="mt-6 border-t border-border pt-5">
                   <Link
                     to="/services"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:text-fg-muted"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-fg transition-colors hover:gap-2 hover:text-fg-muted"
                     aria-label={`Learn more about ${service.title}`}
                   >
                     Learn more

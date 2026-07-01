@@ -18,7 +18,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     <div
       ref={ref}
       className={cn(
-        'rounded-lg border border-border bg-surface',
+        'rounded-lg border border-border bg-surface shadow-sm',
         interactive &&
           'transition-[border-color,box-shadow,transform] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-border-strong hover:shadow-md',
         className,
