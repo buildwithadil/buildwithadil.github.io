@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { Card, Container, Section } from '../ui'
 import SectionHeading from '../components/SectionHeading'
 import ScrollReveal from '../components/ScrollReveal'
+import ImagePlaceholder from '../components/ImagePlaceholder'
 import { projects } from '../data/content'
 
 export default function FeaturedWork() {
@@ -33,26 +34,35 @@ export default function FeaturedWork() {
           {featured.map((project, i) => (
             <ScrollReveal key={project.slug} delay={i * 60}>
               <Link to={`/work/${project.slug}`} className="block h-full">
-                <Card interactive className="flex h-full flex-col p-7">
-                  <p className="text-xs font-medium uppercase tracking-widest text-fg-subtle">
-                    {project.industry}
-                  </p>
-                  <h3 className="mt-3 font-display text-xl font-semibold">
-                    {project.name}
-                  </h3>
-                  <p className="mt-3 flex-1 text-sm text-fg-muted">
-                    {project.summary}
-                  </p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {project.tags.slice(0, 4).map((tag) => (
-                      <li
-                        key={tag}
-                        className="rounded-full border border-border bg-bg-subtle px-2.5 py-0.5 text-xs text-fg-muted"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
+                <Card
+                  interactive
+                  className="flex h-full flex-col overflow-hidden p-0"
+                >
+                  <ImagePlaceholder
+                    label={`[${project.name} Screenshot]`}
+                    className="aspect-[16/10] rounded-none border-x-0 border-t-0"
+                  />
+                  <div className="flex flex-1 flex-col p-7">
+                    <p className="text-xs font-medium uppercase tracking-widest text-fg-subtle">
+                      {project.industry}
+                    </p>
+                    <h3 className="mt-3 font-display text-xl font-semibold">
+                      {project.name}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm text-fg-muted">
+                      {project.summary}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {project.tags.slice(0, 4).map((tag) => (
+                        <li
+                          key={tag}
+                          className="rounded-full border border-border bg-bg-subtle px-2.5 py-0.5 text-xs text-fg-muted"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </Card>
               </Link>
             </ScrollReveal>

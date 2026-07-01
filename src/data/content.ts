@@ -170,6 +170,33 @@ export const faqs: Faq[] = [
   },
 ]
 
-/** First-person note used in place of testimonials until real quotes exist. */
+/** First-person note (kept as a fallback / About voice). */
 export const proofNote =
   'I work directly with every client — no account managers, no handoffs. That means clearer communication, faster decisions, and code I stand behind. I care about the details most people never notice: how fast a page loads, how well it ranks, and how it holds up as you grow.'
+
+export interface Testimonial {
+  quote: string
+  name: string
+  role: string
+  /** TEMPORARY placeholder — must be replaced with an approved quote pre-launch. */
+  temporary?: boolean
+}
+
+// ⚠️ TEMPORARY placeholder testimonials for development only.
+// Replace with client-approved quotes before production launch.
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      'Working with Adil was a great experience from start to finish. He understood our vision quickly, suggested thoughtful improvements, and delivered a platform that truly reflects the quality of our academy. His attention to performance, usability, and long-term maintainability made him a valuable long-term development partner.',
+    name: 'Amir Akhtar',
+    role: 'Founder, Future Meds Academy',
+    temporary: true,
+  },
+  {
+    quote:
+      'Adil approached the project with professionalism and attention to detail. He transformed our ideas into a modern learning platform while keeping communication clear throughout the project. The final platform provides a significantly better experience for both our students and our team.',
+    name: 'Sahib Akhtar',
+    role: 'Founder, Blooms Academy',
+    temporary: true,
+  },
+]
