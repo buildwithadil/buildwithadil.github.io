@@ -10,10 +10,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Solid ink — the primary CTA (black on light / white on dark).
-        primary: 'bg-fg text-bg hover:opacity-90 active:opacity-100',
+        // Signature gradient — the primary CTA (indigo → violet).
+        primary:
+          'text-white shadow-sm [background-image:var(--gradient-brand-strong)] hover:shadow-[0_10px_30px_-8px_rgba(99,102,241,0.6)] active:opacity-95',
+        // Solid ink — a quieter strong action.
+        ink: 'bg-fg text-bg hover:opacity-90 active:opacity-100',
         secondary:
-          'border border-border-strong bg-transparent text-fg hover:bg-bg-subtle',
+          'border border-border-strong bg-transparent text-fg hover:border-fg hover:bg-bg-subtle',
         ghost: 'text-fg-muted hover:bg-bg-subtle hover:text-fg',
         // Inline text action; the reserved accent + underline signal it.
         link: 'text-accent underline underline-offset-4 hover:opacity-80',
