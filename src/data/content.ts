@@ -174,6 +174,17 @@ export const faqs: Faq[] = [
 export const proofNote =
   'I work directly with every client — no account managers, no handoffs. That means clearer communication, faster decisions, and code I stand behind. I care about the details most people never notice: how fast a page loads, how well it ranks, and how it holds up as you grow.'
 
+/** Primary tech stack (shown on Services / About). */
+export const stack = [
+  'React',
+  'TypeScript',
+  'Node.js',
+  'Express',
+  'MongoDB',
+  'Tailwind CSS',
+  'Vite',
+]
+
 export interface Testimonial {
   quote: string
   name: string
