@@ -37,8 +37,8 @@ export const site = {
   //        umamiWebsiteId = the `data-website-id` (a UUID)
   // Others (leave blank unless you use them): Plausible domain, Cloudflare token.
   analytics: {
-    umamiSrc: '',
-    umamiWebsiteId: '',
+    umamiSrc: 'https://cloud.umami.is/script.js',
+    umamiWebsiteId: 'c71ba836-c221-4058-a8d5-81e33f7dc380',
     plausibleDomain: '',
     cloudflareToken: '',
   },
