@@ -31,3 +31,16 @@ pnpm-debug.log*
 .env
 .env.local
 .env.*.local
+
+# Personal / internal — strategy, brand, and planning docs (never publish)
+PRODUCT.md
+PERSONAL_BRAND_GUIDE.md
+/docs/
+
+# Local tooling / agent files (never publish)
+.claude/
+.impeccable/
+.github/hooks/
+.github/skills/
+_shot.mjs
+_formtest.mjs
