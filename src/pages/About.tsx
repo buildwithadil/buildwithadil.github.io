@@ -82,16 +82,28 @@ export default function About() {
                   businesses — the kind of work where the site isn’t a
                   decoration, it’s how the business runs and grows.
                 </p>
-                {/* TODO: add your real origin in your own words — why you started
-                    building, what pulled you toward EdTech. One honest paragraph
-                    here does more for trust than anything else on the page. */}
                 <p>
-                  Most of my work is full-stack and education-led: student
-                  portals, admin systems, and AI-assisted tools, alongside fast
-                  marketing sites for professional services. I gravitate toward
-                  the parts that compound — performance, SEO, and code that stays
-                  clean as you grow — because those are the parts that quietly
-                  decide whether a project succeeds a year later.
+                  I’m self-taught. As a kid I was the one who’d lose whole
+                  afternoons at the computer, taking apart software and games
+                  just to see how they worked. When school finished and it was
+                  time to actually make something of myself, I started where I
+                  already felt at home — the screen. A bit of research led me to
+                  HTML, then CSS, then JavaScript, and it clicked: it was fun,
+                  and I was good at it. “Fun” quietly became a career, and I
+                  haven’t looked back since. What keeps me at it is simple — I
+                  like building things people actually use, that make someone’s
+                  work genuinely easier.
+                </p>
+                <p>
+                  The first time I got to put my whole skill set into a single
+                  project, it was a full learning platform for an academy — and
+                  that pull has stuck. Most of my work now is full-stack and
+                  education-led: student portals, admin systems, and AI-assisted
+                  tools, alongside fast marketing sites for professional
+                  services. I gravitate toward the parts that compound —
+                  performance, SEO, and clean code that holds up as you grow —
+                  because those quietly decide whether a project still works a
+                  year later.
                 </p>
                 <p>
                   I work directly with every client. No account managers, no
