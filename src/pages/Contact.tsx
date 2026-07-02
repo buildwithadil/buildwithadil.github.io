@@ -50,8 +50,10 @@ const fieldBase =
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
@@ -66,16 +68,42 @@ export default function Contact() {
       message: get('message'),
     }
 
-    // With a real endpoint configured, post to it; otherwise fall back to a
-    // pre-filled email so the form always works on a static host.
-    if (site.contact.formEndpoint) {
-      void fetch(site.contact.formEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      setSent(true)
-      form.reset()
+    // With a Web3Forms key, submit it directly so I get an email. No key set →
+    // fall back to a pre-filled mailto so the form always works on a static host.
+    if (site.contact.web3formsKey) {
+      setSubmitting(true)
+      setError(false)
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: site.contact.web3formsKey,
+            subject: `New project enquiry — ${payload.name || 'website'}`,
+            from_name: payload.name || 'Website enquiry',
+            name: payload.name,
+            email: payload.email,
+            project_type: payload.projectType,
+            timeline: payload.timeline,
+            budget: payload.budget,
+            message: payload.message,
+          }),
+        })
+        const json = (await res.json()) as { success?: boolean }
+        if (json.success) {
+          setSent(true)
+          form.reset()
+        } else {
+          setError(true)
+        }
+      } catch {
+        setError(true)
+      } finally {
+        setSubmitting(false)
+      }
       return
     }
 
@@ -126,7 +154,7 @@ export default function Contact() {
                   Thanks — that’s on its way.
                 </h2>
                 <p className="mt-3 text-fg-muted">
-                  {site.contact.formEndpoint
+                  {site.contact.web3formsKey
                     ? 'I’ve got your details and I’ll reply within a day. If it’s urgent, WhatsApp is fastest.'
                     : 'Your email app should have opened with the details filled in — just hit send. If it didn’t, reach me directly on WhatsApp or at ' +
                       site.contact.email +
@@ -241,13 +269,19 @@ export default function Contact() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4">
-                  <Button type="submit" size="lg">
-                    Send project details
+                  <Button type="submit" size="lg" loading={submitting}>
+                    {submitting ? 'Sending…' : 'Send project details'}
                   </Button>
                   <span className="text-sm text-fg-subtle">
                     No obligation. I usually reply within a day.
                   </span>
                 </div>
+                {error && (
+                  <p className="text-sm text-red-600 dark:text-red-400">
+                    Something went wrong sending that. Please try again, or
+                    reach me on WhatsApp or at {site.contact.email}.
+                  </p>
+                )}
               </form>
             )}
           </div>

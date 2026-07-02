@@ -22,9 +22,19 @@ export const site = {
     whatsapp: 'https://wa.me/918625833128',
     calcom: 'https://cal.com/adil-shaikh/discovery-call',
     email: 'reachme.adilshaikh@gmail.com',
-    // Optional form handler (Formspree / Web3Forms / etc). Leave empty to use the
-    // no-backend fallback: the contact form composes a pre-filled email instead.
-    formEndpoint: '',
+    // Real form endpoint. Get a FREE access key at https://web3forms.com (enter
+    // your email, they mail you a key — no account). Paste it here and the contact
+    // form emails you directly. Left empty → falls back to a pre-filled mailto.
+    web3formsKey: '',
+  },
+
+  // Privacy-friendly analytics. Both are optional and OFF until you add a value.
+  //  • Plausible: create a site at https://plausible.io, put the domain here.
+  //  • Cloudflare Web Analytics (free): add your site at dash.cloudflare.com,
+  //    copy the beacon token here. No cookie banner needed for either.
+  analytics: {
+    plausibleDomain: '',
+    cloudflareToken: '',
   },
 
   social: {

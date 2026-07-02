@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MobileCTABar from '../components/MobileCTABar'
 import Texture from '../components/Texture'
+import Analytics from '../components/Analytics'
 
 /**
  * App shell. Composes the chrome and owns cross-route behaviour:
@@ -56,6 +57,7 @@ export default function RootLayout() {
 
       <Footer />
       <MobileCTABar />
+      <Analytics />
     </div>
   )
 }
