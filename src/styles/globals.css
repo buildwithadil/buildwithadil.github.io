@@ -65,7 +65,9 @@
   --duration-base: 220ms;
   --duration-slow: 400ms;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Smooth settle (ease-out-quint) — a distinct, calm deceleration with no
+     overshoot; suits the senior/restrained voice better than a spring bounce. */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-theme='dark'] {
@@ -410,6 +412,41 @@
   50% {
     transform: translate(-50%, 3%) scale(1.06);
   }
+}
+
+/* Scroll cue: a smooth, small vertical drift (no bounce/elastic). Ease-in-out so
+   it decelerates at both ends like a real object settling. */
+@keyframes scroll-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+.animate-scroll-nudge {
+  animation: scroll-nudge 2s ease-in-out infinite;
+}
+
+/* Section index numeral — used only where content is a genuine sequence
+   (selected work, how-i-think, process). Tabular, quiet, brand-tinted. */
+.section-index {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-fg-subtle);
+}
+
+/* Hairline dot field for section depth (very low contrast; decorative only). */
+.dot-field {
+  background-image: radial-gradient(
+    var(--depth-color) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  opacity: 0.06;
 }
 
 @media (prefers-reduced-motion: reduce) {

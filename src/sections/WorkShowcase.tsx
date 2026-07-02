@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react'
 import { Container } from '../ui'
-import Eyebrow from '../components/Eyebrow'
 import BrowserFrame from '../components/BrowserFrame'
 import ImagePlaceholder from '../components/ImagePlaceholder'
 import ScrollReveal from '../components/ScrollReveal'
@@ -56,8 +55,10 @@ function WorkItem({
           </span>
         </div>
 
-        <Eyebrow className="mt-6">{fm.industry}</Eyebrow>
-        <h3 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+        <p className="mt-6 text-sm font-medium uppercase tracking-widest text-fg-subtle">
+          {fm.industry}
+        </p>
+        <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           {fm.title}
         </h3>
         <p className="mt-4 max-w-md text-lg leading-relaxed text-fg-muted">
@@ -113,8 +114,7 @@ export default function WorkShowcase() {
       className="scroll-mt-20 border-t border-border"
     >
       <Container className="pb-4 pt-24 lg:pt-32">
-        <Eyebrow>Selected work</Eyebrow>
-        <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h2 className="max-w-2xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           Two platforms I’m proud to put my name on.
         </h2>
         <p className="measure mt-4 text-lg text-fg-muted">

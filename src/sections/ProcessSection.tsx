@@ -15,9 +15,8 @@ export default function ProcessSection() {
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div className="lg:sticky lg:top-28 lg:self-start">
               <SectionHeading
-                eyebrow="How I work"
                 title="A calm, senior process"
-                intro="Direct communication and clear steps — no account managers, no handoffs, no surprises."
+                intro="Four clear steps, agreed up front. You always know where things stand and what happens next."
               />
             </div>
 

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { Card, Container } from '../ui'
 import SeoHead from '../components/SeoHead'
 import ScrollReveal from '../components/ScrollReveal'
@@ -14,13 +15,18 @@ export default function Work() {
         path="/work"
       />
       <Container className="py-16 sm:py-24">
-        <h1 className="text-5xl font-semibold tracking-tight">Work</h1>
-        <p className="measure mt-4 text-lg text-fg-muted">
-          Real projects across education, business, and non-profit. Click any
-          project for the full case study.
-        </p>
+        <div className="max-w-2xl">
+          <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">
+            Work I’ll put my name on.
+          </h1>
+          <p className="mt-5 text-lg text-fg-muted">
+            Real platforms and sites across education, business, and non-profit —
+            each one shipped end to end. Open any project to see the problem, the
+            calls I made, and what got built.
+          </p>
+        </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {workEntries.map(({ slug, frontmatter: fm }, i) => (
             <ScrollReveal key={slug} delay={i * 60}>
               <Link to={`/work/${slug}`} className="block h-full">
@@ -42,16 +48,26 @@ export default function Work() {
                     <p className="mt-3 flex-1 text-sm text-fg-muted">
                       {fm.summary}
                     </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {fm.tags.slice(0, 5).map((tag) => (
-                        <li
-                          key={tag}
-                          className="rounded-full border border-border bg-bg-subtle px-2.5 py-0.5 text-xs text-fg-muted"
-                        >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
+                    {fm.highlights.length > 0 && (
+                      <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-fg-subtle">
+                        {fm.highlights.slice(0, 3).map((h) => (
+                          <li key={h} className="flex items-center gap-1.5">
+                            <span
+                              aria-hidden
+                              className="size-1 rounded-full bg-accent"
+                            />
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-fg">
+                      Read case study
+                      <ArrowRight
+                        className="size-4 transition-transform duration-[var(--duration-fast)]"
+                        aria-hidden
+                      />
+                    </span>
                   </div>
                 </Card>
               </Link>

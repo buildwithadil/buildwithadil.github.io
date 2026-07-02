@@ -2,18 +2,23 @@ import SeoHead from '../components/SeoHead'
 import { faqLd, personLd, websiteLd } from '../lib/seo'
 import { faqs } from '../data/content'
 import {
-  AboutSnippet,
   FAQSection,
   FinalCTA,
   Hero,
-  Principles,
+  HowIThink,
+  PersonProof,
   ProcessSection,
-  ProofSection,
   ServicesOverview,
-  StatementSection,
+  TrustBand,
   WorkShowcase,
 } from '../sections'
 
+/**
+ * Homepage as a guided argument answering a skeptical remote buyer's four
+ * questions in order: who is this (Hero) → are they good (TrustBand + Work) →
+ * how do they think / why different (HowIThink) → can I trust them
+ * (What I build → Process → Person + proof → FAQ → CTA).
+ */
 export default function Home() {
   return (
     <>
@@ -23,13 +28,12 @@ export default function Home() {
         jsonLd={[personLd(), websiteLd(), faqLd(faqs)]}
       />
       <Hero />
-      <StatementSection />
+      <TrustBand />
       <WorkShowcase />
+      <HowIThink />
       <ServicesOverview />
-      <Principles />
       <ProcessSection />
-      <ProofSection />
-      <AboutSnippet />
+      <PersonProof />
       <FAQSection />
       <FinalCTA />
     </>

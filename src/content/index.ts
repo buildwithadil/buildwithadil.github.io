@@ -9,6 +9,8 @@ export interface WorkFrontmatter {
   tags: string[]
   /** Client-language capabilities — what the business got. Shown in listings. */
   highlights: string[]
+  /** What was delivered (real deliverables) — powers the "At a glance" block. */
+  scope: string[]
   featured: boolean
   order: number
 }
@@ -41,6 +43,7 @@ function parseWork(fm: unknown): WorkFrontmatter {
         summary: z.string(),
         tags: z.array(z.string()),
         highlights: z.array(z.string()).default([]),
+        scope: z.array(z.string()).default([]),
         featured: z.boolean().default(false),
         order: z.number().default(999),
       })

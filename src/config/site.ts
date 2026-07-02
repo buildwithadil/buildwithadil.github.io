@@ -22,6 +22,9 @@ export const site = {
     whatsapp: 'https://wa.me/918625833128',
     calcom: 'https://cal.com/adil-shaikh/discovery-call',
     email: 'reachme.adilshaikh@gmail.com',
+    // Optional form handler (Formspree / Web3Forms / etc). Leave empty to use the
+    // no-backend fallback: the contact form composes a pre-filled email instead.
+    formEndpoint: '',
   },
 
   social: {
@@ -30,12 +33,16 @@ export const site = {
   },
 
   // Primary navigation (final IA). Order = the funnel's supporting pages.
+  // Blog lives in the footer, not the primary nav, until it's regularly seeded —
+  // an apparently-empty "Writing" tab reads as abandoned at the top level.
   nav: [
     { label: 'Work', href: '/work' },
     { label: 'Services', href: '/services' },
     { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
   ],
+
+  // Secondary links surfaced in the footer only (Privacy sits in the bottom bar).
+  footerNav: [{ label: 'Writing', href: '/blog' }],
 
   // The one action everything points to.
   primaryCta: { label: 'Start a project', href: '/contact' },

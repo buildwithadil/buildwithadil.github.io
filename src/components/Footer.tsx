@@ -61,6 +61,13 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              {site.footerNav.map((item) => (
+                <li key={item.href}>
+                  <Link to={item.href} className={listLink}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
