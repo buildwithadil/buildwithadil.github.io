@@ -20,9 +20,9 @@ export default function Work() {
             Work I’ll put my name on.
           </h1>
           <p className="mt-5 text-lg text-fg-muted">
-            Real platforms and sites across education, business, and non-profit —
-            each one shipped end to end. Open any project to see the problem, the
-            calls I made, and what got built.
+            Real platforms and sites across education, business, and non-profit
+            — each one shipped end to end. Open any project to see the problem,
+            the calls I made, and what got built.
           </p>
         </div>
 

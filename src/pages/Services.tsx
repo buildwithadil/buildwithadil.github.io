@@ -16,37 +16,85 @@ const capabilityGroups: {
   {
     title: 'Grow & get found',
     items: [
-      { label: 'Technical SEO', benefit: 'So the right people find you on Google.' },
-      { label: 'Performance & Core Web Vitals', benefit: 'Fast pages that don’t lose impatient visitors.' },
-      { label: 'Analytics & reporting', benefit: 'See what’s working and what to fix.' },
-      { label: 'Conversion-focused design', benefit: 'Turn more visitors into enquiries.' },
+      {
+        label: 'Technical SEO',
+        benefit: 'So the right people find you on Google.',
+      },
+      {
+        label: 'Performance & Core Web Vitals',
+        benefit: 'Fast pages that don’t lose impatient visitors.',
+      },
+      {
+        label: 'Analytics & reporting',
+        benefit: 'See what’s working and what to fix.',
+      },
+      {
+        label: 'Conversion-focused design',
+        benefit: 'Turn more visitors into enquiries.',
+      },
     ],
   },
   {
     title: 'Run your business',
     items: [
-      { label: 'Admin dashboards', benefit: 'Manage everything from one place.' },
-      { label: 'Self-serve CMS', benefit: 'Update content yourself — no developer needed.' },
-      { label: 'Booking & scheduling', benefit: 'Let clients book calls, classes, or slots.' },
-      { label: 'Payments & subscriptions', benefit: 'Take money online, securely.' },
+      {
+        label: 'Admin dashboards',
+        benefit: 'Manage everything from one place.',
+      },
+      {
+        label: 'Self-serve CMS',
+        benefit: 'Update content yourself — no developer needed.',
+      },
+      {
+        label: 'Booking & scheduling',
+        benefit: 'Let clients book calls, classes, or slots.',
+      },
+      {
+        label: 'Payments & subscriptions',
+        benefit: 'Take money online, securely.',
+      },
     ],
   },
   {
     title: 'Serve your users',
     items: [
-      { label: 'Student & customer portals', benefit: 'A private, personalised space for each user.' },
-      { label: 'Secure auth & roles', benefit: 'Right access for students, staff, and admins.' },
-      { label: 'AI-assisted features', benefit: 'Automate the slow parts, where it genuinely helps.' },
-      { label: 'Email & OTP notifications', benefit: 'Keep users informed and verified.' },
+      {
+        label: 'Student & customer portals',
+        benefit: 'A private, personalised space for each user.',
+      },
+      {
+        label: 'Secure auth & roles',
+        benefit: 'Right access for students, staff, and admins.',
+      },
+      {
+        label: 'AI-assisted features',
+        benefit: 'Automate the slow parts, where it genuinely helps.',
+      },
+      {
+        label: 'Email & OTP notifications',
+        benefit: 'Keep users informed and verified.',
+      },
     ],
   },
   {
     title: 'Connect & last',
     items: [
-      { label: 'Third-party integrations', benefit: 'Connect the tools you already use.' },
-      { label: 'Cloud deployment', benefit: 'Reliable hosting that scales with you.' },
-      { label: 'Accessibility (WCAG)', benefit: 'Usable by everyone — and better for SEO.' },
-      { label: 'Maintainable code you own', benefit: 'No lock-in; grow it with any developer.' },
+      {
+        label: 'Third-party integrations',
+        benefit: 'Connect the tools you already use.',
+      },
+      {
+        label: 'Cloud deployment',
+        benefit: 'Reliable hosting that scales with you.',
+      },
+      {
+        label: 'Accessibility (WCAG)',
+        benefit: 'Usable by everyone — and better for SEO.',
+      },
+      {
+        label: 'Maintainable code you own',
+        benefit: 'No lock-in; grow it with any developer.',
+      },
     ],
   },
 ]
@@ -67,9 +115,9 @@ export default function Services() {
             Fast, SEO-strong sites and platforms — built to convert.
           </h1>
           <p className="mt-6 text-lg text-fg-muted">
-            Three ways I help teams grow online. Every project is fixed-price and
-            agreed before we start, so you know the number up front — and you own
-            all the code at the end.
+            Three ways I help teams grow online. Every project is fixed-price
+            and agreed before we start, so you know the number up front — and
+            you own all the code at the end.
           </p>
         </div>
 

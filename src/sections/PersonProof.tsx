@@ -75,8 +75,8 @@ export default function PersonProof() {
                 You’re hiring a person, not a pipeline.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-fg-muted">
-                I’m Adil Shaikh — a full-stack developer who’s spent the last few
-                years building EdTech platforms and fast marketing sites for
+                I’m Adil Shaikh — a full-stack developer who’s spent the last
+                few years building EdTech platforms and fast marketing sites for
                 teams around the world. Hiring a developer you’ve never met is a
                 leap of faith, especially across time zones. So I keep the deal
                 simple and the trust earned:

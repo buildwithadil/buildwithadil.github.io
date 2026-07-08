@@ -77,7 +77,10 @@ export default function Hero() {
       <Container className="flex flex-1 flex-col items-center justify-center py-24 text-center">
         <div className="animate-in" style={delay(0)}>
           <Badge>
-            <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
+            <span
+              className="size-1.5 rounded-full bg-emerald-500"
+              aria-hidden
+            />
             Available for new projects
           </Badge>
         </div>
@@ -131,7 +134,10 @@ export default function Hero() {
           </Button>
         </div>
 
-        <p className="animate-in mt-6 text-sm text-fg-subtle" style={delay(800)}>
+        <p
+          className="animate-in mt-6 text-sm text-fg-subtle"
+          style={delay(800)}
+        >
           No obligation. I usually reply within a day.
         </p>
 

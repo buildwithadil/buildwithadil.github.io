@@ -443,10 +443,7 @@
 
 /* Hairline dot field for section depth (very low contrast; decorative only). */
 .dot-field {
-  background-image: radial-gradient(
-    var(--depth-color) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(var(--depth-color) 1px, transparent 1px);
   background-size: 22px 22px;
   opacity: 0.06;
 }

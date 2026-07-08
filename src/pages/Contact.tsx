@@ -1,5 +1,11 @@
 import { useState, type FormEvent } from 'react'
-import { ArrowUpRight, CalendarClock, Check, Mail, MessageCircle } from 'lucide-react'
+import {
+  ArrowUpRight,
+  CalendarClock,
+  Check,
+  Mail,
+  MessageCircle,
+} from 'lucide-react'
 import { Button, Container } from '../ui'
 import SeoHead from '../components/SeoHead'
 import Headshot from '../components/Headshot'
@@ -35,7 +41,12 @@ const PROJECT_TYPES = [
   'Performance & SEO rebuild',
   'Something else',
 ]
-const TIMELINES = ['As soon as possible', '1–3 months', '3+ months', 'Just exploring']
+const TIMELINES = [
+  'As soon as possible',
+  '1–3 months',
+  '3+ months',
+  'Just exploring',
+]
 const BUDGETS = [
   'Prefer to discuss on a call',
   'Under $2,000',
@@ -77,7 +88,10 @@ export default function Contact() {
       // documented way to call Web3Forms from the browser. `data` already holds
       // the form fields (incl. the botcheck honeypot).
       data.append('access_key', site.contact.web3formsKey)
-      data.append('subject', `New project enquiry — ${payload.name || 'website'}`)
+      data.append(
+        'subject',
+        `New project enquiry — ${payload.name || 'website'}`,
+      )
       data.append('from_name', payload.name || 'Website enquiry')
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
@@ -255,8 +269,8 @@ export default function Contact() {
                     ))}
                   </select>
                   <p className="mt-2 text-sm text-fg-subtle">
-                    A rough range helps me suggest the right scope — projects are
-                    fixed-price, agreed before we start.
+                    A rough range helps me suggest the right scope — projects
+                    are fixed-price, agreed before we start.
                   </p>
                 </div>
 
