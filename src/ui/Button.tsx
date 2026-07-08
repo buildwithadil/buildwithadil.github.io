@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Solid Electric Violet — the one place colour is loud: the primary CTA.
+        // Solid crimson — the one place colour is loud: the primary CTA.
         primary:
           'text-white shadow-sm [background-color:var(--color-accent-solid)] hover:opacity-90 active:opacity-100',
         // Solid ink — a quieter strong action.

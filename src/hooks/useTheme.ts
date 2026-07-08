@@ -4,21 +4,15 @@ export type Theme = 'light' | 'dark'
 
 const STORAGE_KEY = 'theme'
 
-function systemTheme(): Theme {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
-
 function apply(theme: Theme) {
   document.documentElement.dataset.theme = theme
 }
 
 /**
- * Theme controller. The pre-paint script in index.html has already applied the
- * correct theme before React runs (no FOUC); this hook reads that value, lets
- * the user toggle it, persists an explicit choice, and — while the user has NOT
- * made an explicit choice — follows the OS preference live.
+ * Theme controller. Light is the default; dark is an explicit, persisted opt-in
+ * (we deliberately do NOT follow the OS preference). The pre-paint script in
+ * index.html has already applied the correct theme before React runs (no FOUC);
+ * this hook reads that value, lets the user toggle it, and persists the choice.
  *
  * Returns `theme: null` until mounted so SSG markup and first client render
  * agree (no hydration mismatch).
@@ -28,20 +22,8 @@ export function useTheme() {
 
   useEffect(() => {
     const current =
-      (document.documentElement.dataset.theme as Theme | undefined) ??
-      systemTheme()
+      (document.documentElement.dataset.theme as Theme | undefined) ?? 'light'
     setThemeState(current)
-
-    // Follow the OS only when the user hasn't pinned a preference.
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const onChange = () => {
-      if (localStorage.getItem(STORAGE_KEY)) return
-      const next = systemTheme()
-      apply(next)
-      setThemeState(next)
-    }
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
   }, [])
 
   const setTheme = useCallback((next: Theme) => {
