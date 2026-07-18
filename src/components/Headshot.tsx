@@ -1,6 +1,6 @@
 // Responsive, optimized headshot. vite-imagetools generates AVIF + WebP at
 // several widths at build time; the browser picks the smallest that fits.
-import headshot from '../assets/professional-headshot.png?w=280;560;840&format=avif;webp&as=picture'
+import headshot from '../assets/stage-headshot.png?w=280;560;840&format=avif;webp&as=picture'
 import { cn } from '../lib/cn'
 
 export default function Headshot({ className }: { className?: string }) {
