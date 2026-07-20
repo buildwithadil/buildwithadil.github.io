@@ -45,7 +45,7 @@ export const site = {
 
   social: {
     github: 'https://github.com/buildwithadil',
-    linkedin: 'https://www.linkedin.com/in/hey-adilshaikh',
+    linkedin: 'https://www.linkedin.com/in/buildwithadil',
     instagram: 'https://www.instagram.com/buildwithadil_',
   },
 
