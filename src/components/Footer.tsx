@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { CalendarClock, Mail, MessageCircle } from 'lucide-react'
 import { Container } from '../ui'
 import { site } from '../config/site'
-import { GithubIcon, LinkedinIcon } from './BrandIcons'
+import { GithubIcon, InstagramIcon, LinkedinIcon } from './BrandIcons'
 
 const iconLink =
   'inline-flex size-9 items-center justify-center rounded-full border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-fg hover:text-fg'
@@ -42,6 +42,15 @@ export default function Footer() {
                 className={iconLink}
               >
                 <LinkedinIcon width={18} height={18} />
+              </a>
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className={iconLink}
+              >
+                <InstagramIcon width={18} height={18} />
               </a>
             </div>
           </div>

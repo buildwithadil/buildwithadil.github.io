@@ -21,7 +21,11 @@ export function personLd() {
     name: site.author,
     url: site.url,
     jobTitle: site.title,
-    sameAs: [site.social.github, site.social.linkedin],
+    sameAs: [
+      site.social.github,
+      site.social.linkedin,
+      site.social.instagram,
+    ],
   }
 }
 

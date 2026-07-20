@@ -46,6 +46,7 @@ export const site = {
   social: {
     github: 'https://github.com/ThisIsAdil',
     linkedin: 'https://www.linkedin.com/in/hey-adilshaikh',
+    instagram: 'https://www.instagram.com/buildwithadil_',
   },
 
   // Primary navigation (final IA). Order = the funnel's supporting pages.
