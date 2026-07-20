@@ -9,7 +9,7 @@ export const site = {
   title: 'Freelance Full-Stack Web Developer',
 
   // GitHub user-page URL (served lowercase). Swap to a custom domain later.
-  url: 'https://thisisadil.github.io',
+  url: 'https://buildwithadil.github.io',
 
   description:
     'Adil Shaikh — freelance full-stack developer. Fast, SEO-strong websites and web apps, engineered with care.',
@@ -44,7 +44,7 @@ export const site = {
   },
 
   social: {
-    github: 'https://github.com/ThisIsAdil',
+    github: 'https://github.com/buildwithadil',
     linkedin: 'https://www.linkedin.com/in/hey-adilshaikh',
     instagram: 'https://www.instagram.com/buildwithadil_',
   },
