@@ -5,6 +5,7 @@ import { Button, Container } from '../ui'
 import { cn } from '../lib/cn'
 import { site } from '../config/site'
 import ThemeToggle from './ThemeToggle'
+import { setScrollLocked } from '../hooks/useSmoothScroll'
 
 const iconButton =
   'inline-flex size-9 items-center justify-center rounded-full border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-fg hover:text-fg'
@@ -27,11 +28,10 @@ export default function Header() {
     if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
     document.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    setScrollLocked(true)
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
+      setScrollLocked(false)
     }
   }, [open])
 

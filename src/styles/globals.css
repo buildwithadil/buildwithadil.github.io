@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 @import './fonts.css';
+/* Lenis smooth scroll. Its `.lenis-smooth` rule turns off native
+   `scroll-behavior` while running, so the CSS fallback below stays valid for
+   no-JS and reduced-motion visitors. */
+@import 'lenis/dist/lenis.css';
 
 /* Drive dark mode from [data-theme="dark"] (set pre-paint in index.html), not the
    OS media query, so the toggle works at runtime. */

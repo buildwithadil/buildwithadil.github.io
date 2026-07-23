@@ -5,9 +5,11 @@ import Footer from '../components/Footer'
 import MobileCTABar from '../components/MobileCTABar'
 import Texture from '../components/Texture'
 import Analytics from '../components/Analytics'
+import useSmoothScroll, { scrollToTop } from '../hooks/useSmoothScroll'
 
 /**
  * App shell. Composes the chrome and owns cross-route behaviour:
+ *  - smooth (Lenis) scrolling, reduced-motion safe,
  *  - scroll reset on navigation (SPAs don't do this for you),
  *  - focus moved to <main> so keyboard/screen-reader users land on new content,
  *  - a subtle per-route fade (reduced-motion safe),
@@ -19,12 +21,14 @@ export default function RootLayout() {
   const firstRender = useRef(true)
   const [navigated, setNavigated] = useState(false)
 
+  useSmoothScroll()
+
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false
       return
     }
-    window.scrollTo(0, 0)
+    scrollToTop()
     mainRef.current?.focus()
     setNavigated(true)
   }, [pathname])
